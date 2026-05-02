@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jarvis Console</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="grid">
+    <header>
+      <div class="logo">JARVIS</div>
+      <div>
+        <div class="status" id="status">offline</div>
+        <div class="agent-state" id="agent-state">idle</div>
+      </div>
+    </header>
+
+    <canvas id="orb"></canvas>
+
+    <section class="console">
+      <div class="log" id="log"></div>
+      <div class="input-row">
+        <input id="command" type="text" placeholder="Type a command…">
+        <button id="send">Send</button>
+        <button id="mic" title="Hold to speak">🎤</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="/static/main.js"></script>
+</body>
+</html>

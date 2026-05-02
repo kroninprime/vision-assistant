@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+pydantic
+SpeechRecognition
+pyttsx3
+pyautogui
+pytesseract
+Pillow
+python-dotenv
+openai
+pynput

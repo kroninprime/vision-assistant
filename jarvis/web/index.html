@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jarvis Chat</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #0f1116; color: #e9edf1; }
+    .wrap { max-width: 900px; margin: 20px auto; padding: 16px; }
+    #chat { height: 72vh; overflow-y: auto; background: #171b22; border-radius: 10px; padding: 12px; }
+    .msg { margin: 8px 0; padding: 10px 12px; border-radius: 10px; max-width: 80%; white-space: pre-wrap; }
+    .user { margin-left: auto; background: #294a8d; }
+    .jarvis { background: #263238; }
+    .time { font-size: 12px; opacity: .7; margin-top: 4px; }
+    .row { display: flex; gap: 8px; margin-top: 10px; }
+    input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #2f3947; background: #11161f; color: #e9edf1; }
+    button { padding: 10px 12px; border: 0; border-radius: 8px; cursor: pointer; background: #00b894; color: #101820; font-weight: 700; }
+    .note { font-size: 12px; opacity: .85; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h2 style="margin:0 0 10px 0;">Jarvis Chat</h2>
+    <div id="chat"></div>
+    <div class="row">
+      <input id="input" placeholder="Type and press Enter (example: wake up jarvis)" />
+      <button id="micBtn">🎙 Talk</button>
+    </div>
+    <div class="note" id="micStatus">Mic status: checking...</div>
+  </div>
+
+  <script>
+    const chat = document.getElementById("chat");
+    const input = document.getElementById("input");
+    const micBtn = document.getElementById("micBtn");
+    const micStatus = document.getElementById("micStatus");
+
+    function renderMessage(role, text, time = "") {
+      const node = document.createElement("div");
+      node.className = `msg ${role === "user" ? "user" : "jarvis"}`;
+      node.innerHTML = `<div>${text || ""}</div><div class="time">${time || ""}</div>`;
+      chat.appendChild(node);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    async function loadHistory() {
+      const res = await fetch("/api/history");
+      const items = await res.json();
+      chat.innerHTML = "";
+      items.forEach(m => renderMessage(m.role, m.text, m.time));
+    }
+
+    async function sendMessage(message) {
+      const msg = (message ?? input.value).trim();
+      if (!msg) return;
+      input.value = "";
+      renderMessage("user", msg, new Date().toLocaleTimeString());
+      const res = await fetch("/api/message", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ message: msg })
+      });
+      const data = await res.json();
+      renderMessage("jarvis", data.reply, new Date().toLocaleTimeString());
+    }
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") sendMessage();
+    });
+
+    micBtn.onclick = async () => {
+      micBtn.disabled = true;
+      micBtn.textContent = "Listening...";
+      micStatus.textContent = "Mic status: listening from system mic...";
+      try {
+        const res = await fetch("/api/listen", { method: "POST" });
+        const data = await res.json();
+        if (!data.transcript) {
+          micStatus.textContent = "Mic status: no speech heard. Try again and speak clearly.";
+        } else {
+          micStatus.textContent = `Heard: "${data.transcript}"`;
+          await sendMessage(data.transcript);
+        }
+      } catch {
+        micStatus.textContent = "Mic status: failed to access system mic.";
+      } finally {
+        micBtn.disabled = false;
+        micBtn.textContent = "🎙 Talk";
+      }
+    };
+
+    fetch("/api/mic-status")
+      .then((r) => r.json())
+      .then((d) => { micStatus.textContent = `Mic status: ${d.status}`; })
+      .catch(() => { micStatus.textContent = "Mic status: unavailable"; });
+
+    loadHistory();
+  </script>
+</body>
+</html>
+

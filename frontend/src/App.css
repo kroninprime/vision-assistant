@@ -1,0 +1,285 @@
+:root {
+  --bg: #0c0f1a;
+  --panel: rgba(16, 22, 34, 0.9);
+  --panel-strong: rgba(12, 18, 28, 0.96);
+  --line: rgba(80, 180, 255, 0.28);
+  --text: #e8f5ff;
+  --muted: #9db4c8;
+  --accent: #5bc0ff;
+  --accent-2: #ffb266;
+  --danger: #ff7b7b;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(91, 192, 255, 0.18), transparent 30%),
+    radial-gradient(circle at 85% 80%, rgba(255, 178, 102, 0.18), transparent 32%),
+    linear-gradient(135deg, #0b1324 0%, #0e1a2f 50%, #101d33 100%);
+  color: var(--text);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  padding: 32px;
+  overflow: hidden;
+}
+
+.ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(121, 242, 160, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(121, 242, 160, 0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 92%);
+  pointer-events: none;
+}
+
+.hero-panel,
+.viewer-panel {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-panel {
+  display: grid;
+  gap: 24px;
+  margin: 0 auto 28px;
+  max-width: 1280px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+}
+
+.title-block h1 {
+  margin: 0;
+  max-width: 900px;
+  font-size: clamp(2rem, 4vw, 4.25rem);
+  line-height: 1;
+}
+
+.subcopy {
+  max-width: 780px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-size: 0.98rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, var(--accent), #52d889);
+  color: #062214;
+  box-shadow: 0 14px 32px rgba(121, 242, 160, 0.24);
+}
+
+.secondary-btn {
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+  transform: translateY(-1px);
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.status-card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+}
+
+.status-card .label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.status-card small {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.viewer-panel {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.viewer-frame,
+.detection-panel {
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+.viewer-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.camera-feed,
+.hud-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hud-layer {
+  pointer-events: none;
+}
+
+.scan-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(121, 242, 160, 0.9), transparent);
+  box-shadow: 0 0 24px rgba(121, 242, 160, 0.8);
+}
+
+.detection-panel {
+  padding: 18px;
+}
+
+.detection-header,
+.list-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 0.7fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.detection-header {
+  padding-bottom: 14px;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}
+
+.focus-card {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  margin-bottom: 16px;
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(121, 242, 160, 0.16), rgba(255, 211, 111, 0.08)),
+    rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(121, 242, 160, 0.25);
+}
+
+.focus-card p,
+.focus-card span,
+.list-row {
+  color: var(--muted);
+}
+
+.focus-card h2,
+.focus-card strong {
+  margin: 0;
+  color: var(--text);
+}
+
+.focus-card.empty {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.list-panel {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.list-row {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.insight-card {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(121, 242, 160, 0.08);
+  border: 1px solid rgba(121, 242, 160, 0.16);
+}
+
+.insight-card .label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+}
+
+.insight-card strong {
+  color: var(--text);
+  line-height: 1.5;
+}
+
+@media (max-width: 980px) {
+  .app-shell {
+    padding: 20px;
+  }
+
+  .status-grid,
+  .viewer-panel {
+    grid-template-columns: 1fr;
+  }
+}

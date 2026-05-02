@@ -1,0 +1,21 @@
+{
+  "settings_version": "0.0.6",
+  "datasets_dir": "C:\\Users\\PERI\\Desktop\\python workspace\\backend\\datasets",
+  "weights_dir": "weights",
+  "runs_dir": "runs",
+  "uuid": "5e9a4b7adf2b1c00dc68ee6ce50f6921e2ef3f1064cdfdec0c8f6020ff441d2b",
+  "sync": true,
+  "api_key": "",
+  "openai_api_key": "",
+  "clearml": true,
+  "comet": true,
+  "dvc": true,
+  "hub": true,
+  "mlflow": true,
+  "neptune": true,
+  "raytune": true,
+  "tensorboard": false,
+  "wandb": false,
+  "vscode_msg": true,
+  "openvino_msg": true
+}

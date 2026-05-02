@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jarvis Console</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <canvas id="orbCanvas"></canvas>
+    <div class="hud">
+      <h1>JARVIS</h1>
+      <p id="stateText">State: idle</p>
+      <p id="messageText">Say a command or type one below.</p>
+
+      <div class="controls">
+        <button id="micBtn">🎤 Voice Command</button>
+        <button id="speakBtn">🔊 Toggle Browser Voice</button>
+      </div>
+
+      <div class="input-row">
+        <input id="commandInput" type="text" placeholder="open chrome" />
+        <button id="sendBtn">Send</button>
+      </div>
+
+      <label class="checkbox">
+        <input id="ocrCheck" type="checkbox" />
+        Include screen OCR context
+      </label>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

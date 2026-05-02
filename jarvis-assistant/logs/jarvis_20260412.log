@@ -1,0 +1,58 @@
+2026-04-12 13:16:23 [jarvis.main] [INFO] Wake word listener ready: False
+2026-04-12 13:22:12 [jarvis.main] [INFO] Wake word listener ready: False
+2026-04-12 13:22:12 [jarvis.wake_word] [WARNING] Wake word microphone unavailable: Could not find PyAudio; check installation
+2026-04-12 13:22:12 [jarvis.main] [INFO] 
+JARVIS User Profile
+====================
+Commands learned: 0
+Success rate: 0.0%
+
+Favorite commands:
+
+User preferences: 0
+Error recovery strategies: 0
+
+2026-04-12 13:22:35 [jarvis.learning] [DEBUG] Learned command: open spotify (count: 1)
+2026-04-12 13:22:35 [jarvis.learning] [DEBUG] User profile saved
+2026-04-12 13:22:35 [jarvis.agent] [INFO] Generated plan for 'open spotify':
+Brain offline: set OPENAI_API_KEY to enable full answers.
+2026-04-12 13:22:35 [jarvis.agent] [INFO] Executing plan: open spotify
+2026-04-12 13:22:35 [jarvis.agent] [INFO] Executing task: Brain offline: set OPENAI_API_KEY to enable full answers.
+2026-04-12 13:22:35 [jarvis.system_control] [INFO] Executing command: set OPENAI_API_KEY to enable full answers.
+2026-04-12 13:22:35 [jarvis.learning] [DEBUG] Learned command: open spotify (count: 2)
+2026-04-12 13:22:35 [jarvis.learning] [DEBUG] User profile saved
+2026-04-12 13:22:48 [jarvis.learning] [DEBUG] Learned command: open chrome (count: 1)
+2026-04-12 13:22:48 [jarvis.learning] [DEBUG] User profile saved
+2026-04-12 13:22:48 [jarvis.agent] [INFO] Generated plan for 'open chrome':
+Brain offline: set OPENAI_API_KEY to enable full answers.
+2026-04-12 13:22:48 [jarvis.agent] [INFO] Executing plan: open chrome
+2026-04-12 13:22:48 [jarvis.agent] [INFO] Executing task: Brain offline: set OPENAI_API_KEY to enable full answers.
+2026-04-12 13:22:48 [jarvis.system_control] [INFO] Executing command: set OPENAI_API_KEY to enable full answers.
+2026-04-12 13:22:48 [jarvis.learning] [DEBUG] Learned command: open chrome (count: 2)
+2026-04-12 13:22:48 [jarvis.learning] [DEBUG] User profile saved
+2026-04-12 13:25:14 [jarvis.wake_word] [INFO] Wake word listener stopped
+2026-04-12 13:26:08 [jarvis.learning] [INFO] User profile loaded
+2026-04-12 13:26:08 [jarvis.main] [INFO] Wake word listener ready: False
+2026-04-12 13:26:08 [jarvis.wake_word] [WARNING] Wake word microphone unavailable: Could not find PyAudio; check installation
+2026-04-12 13:26:08 [jarvis.main] [INFO] 
+JARVIS User Profile
+====================
+Commands learned: 4
+Success rate: 100.0%
+
+Favorite commands:
+  • open spotify (used 2 times)
+  • open chrome (used 2 times)
+
+User preferences: 0
+Error recovery strategies: 0
+
+2026-04-12 13:26:25 [jarvis.learning] [DEBUG] Learned command: open chrome (count: 3)
+2026-04-12 13:26:25 [jarvis.learning] [DEBUG] User profile saved
+2026-04-12 13:26:25 [jarvis.agent] [INFO] Generated plan for 'open chrome':
+Brain offline: set OPENAI_API_KEY to enable full answers.
+2026-04-12 13:26:25 [jarvis.agent] [INFO] Executing plan: open chrome
+2026-04-12 13:26:25 [jarvis.agent] [INFO] Executing task: Brain offline: set OPENAI_API_KEY to enable full answers.
+2026-04-12 13:26:25 [jarvis.system_control] [INFO] Executing command: set OPENAI_API_KEY to enable full answers.
+2026-04-12 13:26:25 [jarvis.learning] [DEBUG] Learned command: open chrome (count: 4)
+2026-04-12 13:26:25 [jarvis.learning] [DEBUG] User profile saved
